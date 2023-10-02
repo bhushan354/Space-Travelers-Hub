@@ -4,7 +4,6 @@ import MyProfile from './components/MyProfile';
 import Missions from './components/Missions';
 import Rockets from './components/Rockets';
 
-
 function App() {
   return (
     <>
@@ -12,7 +11,7 @@ function App() {
         <div className="navContainer">
           <div>
             <li className="heading">
-              Space Travelers' Hub
+              Space Travelers Hub
             </li>
           </div>
 

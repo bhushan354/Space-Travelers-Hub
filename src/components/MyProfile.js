@@ -3,7 +3,7 @@ import React from 'react';
 function MyProfile() {
   return (
     <div className="MyProfile">
-      <h2>Welcome To MyProfile</h2>
+      <h2>Welcome To My-Profile</h2>
     </div>
   );
 }

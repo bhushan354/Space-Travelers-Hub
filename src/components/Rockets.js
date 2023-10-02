@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Rockets() {
   return (
     <div>
-      <h2>here goes rocket page</h2>
+      <h2>Here goes Rocket page</h2>
     </div>
-  )
+  );
 }
 
-export default Rockets
+export default Rockets;
