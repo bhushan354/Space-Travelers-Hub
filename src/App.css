@@ -1,7 +1,8 @@
-li{
+li {
   text-decoration: none;
   list-style: none;
 }
+
 .navContainer {
   display: flex;
   flex-direction: row;
@@ -14,10 +15,6 @@ li{
 li.heading {
   font-size: 30px;
   font-weight: 600;
-}
-
-li {
-  list-style-type: none;
 }
 
 .linksContainer {
