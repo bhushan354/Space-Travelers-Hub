@@ -1,0 +1,33 @@
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background: darkslategrey;
+  color: aliceblue;
+}
+
+li.heading {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.linksContainer {
+  display: flex;
+  list-style-type: none;
+  gap: 12px;
+  align-items: center;
+}
+
+a {
+  color: currentColor;
+  background: blueviolet;
+  padding: 4px;
+  border-radius: 6px;
+  text-decoration: none;
+}
