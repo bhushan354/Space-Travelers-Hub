@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import MyProfile from './components/MyProfile';
 import Missions from './components/Missions';
 import Rockets from './components/Rockets';
@@ -7,27 +7,24 @@ import Rockets from './components/Rockets';
 function App() {
   return (
     <>
-      <nav>
-        <div className="navContainer">
-          <div>
-            <li className="heading">
-              Space Travelers Hub
-            </li>
-          </div>
-
-          <div className="linksContainer">
-            <li>
-              <Link to="/rockets">Rockets</Link>
-            </li>
-            <li>
-              <Link to="/missions">Missions</Link>
-            </li>
-            <li>
-              <Link to="/">MyProfile</Link>
-            </li>
+      <header>
+        <div className="title">
+          <div className="container-title">
+            <h1 className="store">Space X</h1>
+            <ul>
+              <li>
+                <NavLink to="/" className="current">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/rockets" className="current">Rockets</NavLink>
+              </li>
+              <li>
+                <NavLink to="/missions" className="current">Missions</NavLink>
+              </li>
+            </ul>
           </div>
         </div>
-      </nav>
+      </header>
       <div className="container">
         <Routes>
           <Route path="/rockets" element={<Rockets />} />
