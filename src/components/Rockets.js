@@ -29,13 +29,9 @@ RocketItem.propTypes = {
 const Rockets = () => {
   const dispatch = useDispatch();
   const { rocketsData, isLoading, hasError } = useSelector((store) => store.rocketsData);
-  console.log(rocketsData);
-
   useEffect(() => {
     dispatch(getRocketsApi());
   }, [dispatch]);
-
-  console.log(rocketsData);
 
   let allRockets;
 
