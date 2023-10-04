@@ -31,3 +31,21 @@ a {
   border-radius: 6px;
   text-decoration: none;
 }
+
+/* rockets stylinh */
+
+.eachRocket {
+  display: flex;
+  gap: 16px;
+}
+
+.eachRocketImg img {
+  width: 320px;
+  height: 250px;
+}
+
+.eachRocketInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
