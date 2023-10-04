@@ -28,7 +28,8 @@ RocketCard.propTypes = {
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const { rockets, isLoading, hasError } = useSelector((store) => store.rockets);
+  const { rocketsData, isLoading, hasError } = useSelector((store) => store);
+  console.log(rocketsData);
 
   useEffect(() => {
     dispatch(getRocketsApi());
@@ -36,10 +37,10 @@ const Rockets = () => {
 
   let content;
 
-  if (!isLoading && !hasError && Array.isArray(rockets)) {
+  if (!isLoading && !hasError && Array.isArray(rocketsData)) {
     content = (
       <div className="rockets">
-        {rockets.map((rocket) => (
+        {rocketsData.map((rocket) => (
           <RocketCard
             key={rocket.id}
             id={rocket.id}
@@ -59,7 +60,7 @@ const Rockets = () => {
     content = <h2>Something went wrong while Loading Rockets</h2>;
   }
 
-  return <section className="rocket-section">{content}</section>;
+  return <div className="rocket-section">{content}</div>;
 };
 
 export default Rockets;
