@@ -1,3 +1,56 @@
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background: darkslategrey;
+  color: aliceblue;
+}
+
+li.heading {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.linksContainer {
+  display: flex;
+  list-style-type: none;
+  gap: 12px;
+  align-items: center;
+}
+
+a {
+  color: currentColor;
+  background: blueviolet;
+  padding: 4px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* rockets stylinh */
+
+.eachRocket {
+  display: flex;
+  gap: 16px;
+}
+
+.eachRocketImg img {
+  width: 320px;
+  height: 250px;
+}
+
+.eachRocketInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* missions STyling */
 .container-title {
   width: 100%;
   height: 15vh;

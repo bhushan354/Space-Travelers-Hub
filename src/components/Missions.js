@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { fetchMissionsData } from '../redux/Missions/missionsSlice';
+import { fetchMissionsData } from './Redux/Missions/missionsSlice';
 
 const MissionTable = () => {
   const missionsData = useSelector((state) => state.missions.missionsData);
