@@ -27,6 +27,7 @@ const MissionTable = () => {
           <th>Description</th>
           <th>Status</th>
         </tr>
+        <th> </th>
       </thead>
       <tbody>
         {missionsData &&
@@ -35,6 +36,9 @@ const MissionTable = () => {
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>Upcoming</td>
+              <td>
+                <button type='button'>Join Mission</button>
+              </td>
             </tr>
           ))}
       </tbody>
