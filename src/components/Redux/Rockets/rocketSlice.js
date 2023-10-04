@@ -28,7 +28,8 @@ const rocketSlice = createSlice({
   name: 'RocketUser',
   initialState,
   reducers: {
-    handleRocket: (state, { payload }) => ({
+    // reducer for reserved button will have to use later
+    setRocket: (state, { payload }) => ({
       ...state,
       rocketsData: state.rocketsData.map((rocket) => (rocket.id === payload
         ? { ...rocket, reserved: !rocket.reserved }
@@ -54,4 +55,4 @@ const rocketSlice = createSlice({
 });
 
 export default rocketSlice.reducer;
-export const { handleRocket } = rocketSlice.actions;
+export const { setRocket } = rocketSlice.actions;

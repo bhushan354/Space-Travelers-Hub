@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRocketsApi } from './Redux/Rockets/rocketSlice';
 
-const RocketCard = ({
+const RocketItem = ({
   id, name, image, description,
 }) => (
   <div key={id}>
@@ -13,13 +13,13 @@ const RocketCard = ({
       <img src={image} alt="" />
     </div>
     <div>
-      <p>{name}</p>
-      <p>{description}</p>
+      <h2>{name}</h2>
+      <h4>{description}</h4>
     </div>
   </div>
 );
 
-RocketCard.propTypes = {
+RocketItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -28,20 +28,22 @@ RocketCard.propTypes = {
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const { rocketsData, isLoading, hasError } = useSelector((store) => store);
+  const { rocketsData, isLoading, hasError } = useSelector((store) => store.rocketsData);
   console.log(rocketsData);
 
   useEffect(() => {
     dispatch(getRocketsApi());
   }, [dispatch]);
 
-  let content;
+  console.log(rocketsData);
+
+  let allRockets;
 
   if (!isLoading && !hasError && Array.isArray(rocketsData)) {
-    content = (
+    allRockets = (
       <div className="rockets">
         {rocketsData.map((rocket) => (
-          <RocketCard
+          <RocketItem
             key={rocket.id}
             id={rocket.id}
             name={rocket.name}
@@ -54,13 +56,13 @@ const Rockets = () => {
   }
 
   if (isLoading) {
-    content = <h1>Loading Rockets ...</h1>;
+    allRockets = <p>Loading Rockets ...</p>;
   }
   if (hasError) {
-    content = <h2>Something went wrong while Loading Rockets</h2>;
+    allRockets = <p>Something went wrong while Loading Rockets</p>;
   }
 
-  return <div className="rocket-section">{content}</div>;
+  return <div className="rocket-section">{allRockets}</div>;
 };
 
 export default Rockets;
