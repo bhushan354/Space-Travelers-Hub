@@ -4,15 +4,16 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRocketsApi } from './Redux/Rockets/rocketSlice';
+import '../App.css';
 
 const RocketItem = ({
   id, name, image, description,
 }) => (
-  <div key={id}>
-    <div>
+  <div key={id} className="eachRocket">
+    <div className="eachRocketImg">
       <img src={image} alt="" />
     </div>
-    <div>
+    <div className="eachRocketInfo">
       <h2>{name}</h2>
       <h4>{description}</h4>
     </div>
@@ -35,7 +36,7 @@ const Rockets = () => {
 
   let allRockets;
 
-  if (!isLoading && !hasError && Array.isArray(rocketsData)) {
+  if (!isLoading && !hasError) {
     allRockets = (
       <div className="rockets">
         {rocketsData.map((rocket) => (
