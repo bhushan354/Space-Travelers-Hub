@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { fetchMissionsData } from '../redux/missions/missionsSlice';
+import { fetchMissionsData } from '../redux/Missions/missionsSlice';
 
 const MissionTable = () => {
   const missionsData = useSelector((state) => state.missions.missionsData);
@@ -30,14 +30,14 @@ const MissionTable = () => {
         <th> </th>
       </thead>
       <tbody>
-        {missionsData &&
-          missionsData.map((mission) => (
+        {missionsData
+          && missionsData.map((mission) => (
             <tr key={mission.mission_id}>
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>Upcoming</td>
               <td>
-                <button type='button'>Join Mission</button>
+                <button type="button">Join Mission</button>
               </td>
             </tr>
           ))}
