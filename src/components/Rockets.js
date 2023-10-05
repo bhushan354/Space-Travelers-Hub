@@ -11,7 +11,7 @@ const RocketItem = ({
 }) => (
   <div key={id} className="eachRocket">
     <div className="eachRocketImg">
-      <img src={image} alt="" />
+      <img src={image} alt="rocketImage" />
     </div>
     <div className="eachRocketInfo">
       <h2>{name}</h2>
