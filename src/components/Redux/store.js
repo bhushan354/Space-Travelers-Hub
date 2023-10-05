@@ -8,9 +8,5 @@ const store = configureStore({
     rocketsData: rocketsReducer,
   },
 });
-    rocketsData: rocketsReducer,
-    // add Your Mission reducer here
-  },
-});
 
 export default store;
