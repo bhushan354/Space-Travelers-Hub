@@ -18,7 +18,7 @@ export const getRocketsApi = createAsyncThunk(
       id: rocket.id,
       name: rocket.name,
       description: rocket.description,
-      image: rocket.flickr_images[0],
+      image: rocket.flickr_images[1],
     }));
     return ApiResponse;
   },
@@ -28,18 +28,28 @@ const rocketSlice = createSlice({
   name: 'RocketUser',
   initialState,
   reducers: {
-    // reducer for reserved button will have to use later
-    setRocket: (state, { payload }) => ({
-      ...state,
-      rocketsData: state.rocketsData.map((rocket) => (rocket.id === payload
-        ? { ...rocket, reserved: !rocket.reserved }
-        : { ...rocket })),
-    }),
+    addReserved: (state, action) => {
+      const getRocketById = action.payload;
+      state.rocketsData = state.rocketsData.map((rocket) => ({
+        ...rocket,
+        isReserved: rocket.id === getRocketById ? true : rocket.isReserved,
+      }));
+    },
+    removeReserved: (state, action) => {
+      const getRocketById = action.payload;
+      state.rocketsData = state.rocketsData.map((rocket) => ({
+        ...rocket,
+        isReserved: rocket.id === getRocketById ? false : rocket.isReserved,
+      }));
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getRocketsApi.fulfilled, (state, { payload }) => {
-        state.rocketsData = payload;
+        state.rocketsData = payload.map((rocket) => ({
+          ...rocket,
+          isReserved: false,
+        }));
         state.isLoading = false;
         state.hasError = false;
       })
@@ -55,4 +65,4 @@ const rocketSlice = createSlice({
 });
 
 export default rocketSlice.reducer;
-export const { setRocket } = rocketSlice.actions;
+export const { addReserved, removeReserved } = rocketSlice.actions;
