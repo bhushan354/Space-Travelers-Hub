@@ -22,7 +22,7 @@ export const getRocketsApi = createAsyncThunk(
       isReserved: false,
     }));
     return ApiResponse;
-  },
+  }
 );
 
 const rocketSlice = createSlice({
