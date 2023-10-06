@@ -6,18 +6,13 @@ import {
   getMissionsData,
 } from './Redux/Missions/missionsSlice';
 
-function MissionButton({ id, reserved }) {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(missionsHandler(id));
-  };
-
+// MissionButton Component
+function MissionButton({ id, reserved, onClick }) {
   return (
     <button
       className={`${reserved ? 'leave-mission-btn' : 'join-mission-btn'}`}
       type="button"
-      onClick={handleClick}
+      onClick={() => onClick(id)}
     >
       {reserved ? 'Leave Mission' : 'Join Mission'}
     </button>
@@ -27,10 +22,16 @@ function MissionButton({ id, reserved }) {
 MissionButton.propTypes = {
   id: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
+// MissionItem Component
 function MissionItem({
-  id, name, description, reserved,
+  id,
+  name,
+  description,
+  reserved,
+  onMissionButtonClick,
 }) {
   return (
     <>
@@ -44,7 +45,11 @@ function MissionItem({
         )}
       </td>
       <td className="table-btns">
-        <MissionButton id={id} reserved={reserved} />
+        <MissionButton
+          id={id}
+          reserved={reserved}
+          onClick={onMissionButtonClick}
+        />
       </td>
     </>
   );
@@ -55,11 +60,17 @@ MissionItem.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
+  onMissionButtonClick: PropTypes.func.isRequired,
 };
 
+// Missions Component
 function Missions() {
   const dispatch = useDispatch();
   const { missions, pending, error } = useSelector((store) => store.missions);
+
+  const handleMissionButtonClick = (id) => {
+    dispatch(missionsHandler(id));
+  };
 
   useEffect(() => {
     if (missions.length < 1) {
@@ -86,6 +97,7 @@ function Missions() {
                 name={mission.name}
                 description={mission.description}
                 reserved={mission.reserved}
+                onMissionButtonClick={handleMissionButtonClick}
               />
             </tr>
           ))}
