@@ -6,9 +6,6 @@ function MyProfile() {
   const { rocketsData } = useSelector((state) => state.rocketsData);
   const reservedRockets = rocketsData.filter((rocket) => rocket.isReserved === true);
 
-  // const { missions } = useSelector((state) => state.missions);
-  // const activeMissions = missions.filter((rocket) => rocket.reserved === true);
-
   return (
     <div className="mainContainer">
       <div className="rocketsContainer">
@@ -20,16 +17,6 @@ function MyProfile() {
         </ol>
       </div>
       {/* your joined missions here */}
-      <div className="missionsContainer">
-        <h2>My Missions</h2>
-        <ol className="allActiveContainer">
-          <li>first thing</li>
-          <li>second thing</li>
-          {/* {activeMissions.map((rocket) => (
-            <li className="reservedMissionsLi" key={rocket.id}>{rocket.name}</li>
-          ))} */}
-        </ol>
-      </div>
     </div>
   );
 }
