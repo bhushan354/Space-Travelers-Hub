@@ -3,18 +3,34 @@ li {
   list-style: none;
 }
 
+ul {
+  width: 100%;
+  padding: 0;
+}
+
+.wholeSiteContainer {
+  padding: 10px;
+}
+
+.rockets {
+  padding: 60px;
+}
+
 .navContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
-  background: darkslategrey;
-  color: aliceblue;
 }
 
 li.heading {
   font-size: 30px;
   font-weight: 600;
+}
+
+.allReservedContainer li {
+  border: solid 1px rgb(211, 211, 211);
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
 .linksContainer {
@@ -24,30 +40,78 @@ li.heading {
   align-items: center;
 }
 
+.planet {
+  width: 60px;
+}
+
+.logoHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 a {
   color: currentColor;
-  background: blueviolet;
+  color: rgb(38, 80, 196);
+  font-size: large;
   padding: 4px;
   border-radius: 6px;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* rockets stylinh */
 
 .eachRocket {
   display: flex;
-  gap: 16px;
+  gap: 8px;
+  padding: 6px;
 }
 
 .eachRocketImg img {
-  width: 320px;
-  height: 250px;
+  height: 210px;
+  width: 300px;
 }
 
 .eachRocketInfo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.eachRocketInfo h2 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+span.smallBtnCheck {
+  background-color: #17a2b9;
+  color: white;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+button.addReservedBtn {
+  background-color: rgb(57, 159, 255);
+  color: white;
+  border: none;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid gray;
+  margin: 20px 0;
+}
+
+.cancelReservedBtn {
+  color: red;
+  padding: 6px;
+  background: transparent;
+  font-weight: 400;
+  border: 2px solid red;
+  border-radius: 2px;
 }
 
 /* missions STyling */
@@ -82,6 +146,38 @@ a {
 .container-title ul li {
   list-style-type: none;
   padding-left: 20px;
+}
+
+.activeMember {
+  padding: 2px;
+  background-color: rgb(57, 159, 255);
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+}
+
+.notMember {
+  padding: 0.2rem 0.4rem;
+  background-color: rgb(105, 105, 105);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.joinMission {
+  font-weight: 500;
+  padding: 2px;
+  color: rgb(105, 105, 105);
+  border: solid 2px;
+  border-radius: 0.2rem;
+}
+
+.leaveMission {
+  font-weight: 500;
+  padding: 2px;
+  color: red;
+  border: solid 2px;
+  border-radius: 0.2rem;
 }
 
 .last {
@@ -189,34 +285,6 @@ a {
   background-color: #fff;
 }
 
-/* loading spinner  */
-
-.loading-spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.3);
-  border-top: 4px solid #34a6db;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 /*
 myprofile css */
 
@@ -224,4 +292,9 @@ myprofile css */
   display: flex;
   gap: 38px;
   justify-content: space-around;
+}
+
+.allReservedContainer {
+  font-weight: 600;
+  font-size: 24px;
 }

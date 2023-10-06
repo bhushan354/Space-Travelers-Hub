@@ -4,12 +4,6 @@ import PropTypes from 'prop-types';
 import { getRocketsApi, addReserved, removeReserved } from './Redux/Rockets/rocketSlice';
 import '../App.css';
 
-const LoadingSpinner = () => (
-  <div className="loading-spinner-container">
-    <div className="loading-spinner" />
-  </div>
-);
-
 const RocketItem = ({
   id, name, image, description, isReserved, dispatch,
 }) => (
@@ -19,13 +13,14 @@ const RocketItem = ({
     </div>
     <div className="eachRocketInfo">
       <h2>{name}</h2>
-      <div className="badge">
-        {isReserved && <span className="reserved-badge">Reserved</span>}
+      <div>
+        {isReserved && <span className="smallBtnCheck">Reserved</span>}
         <p>{description}</p>
       </div>
       {isReserved ? (
         <button
           type="button"
+          className="cancelReservedBtn"
           onClick={() => {
             if (isReserved) {
               dispatch(removeReserved(id));
@@ -39,6 +34,7 @@ const RocketItem = ({
       ) : (
         <button
           type="button"
+          className="addReservedBtn"
           onClick={() => {
             if (isReserved) {
               dispatch(removeReserved(id));
@@ -91,7 +87,9 @@ const Rockets = () => {
   }
 
   if (isLoading) {
-    allRockets = <LoadingSpinner />;
+    <h2>
+      Your Rockets are Loading ...
+    </h2>;
   }
   if (hasError) {
     allRockets = <p>Something went wrong while Loading Rockets</p>;
