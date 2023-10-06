@@ -29,7 +29,9 @@ MissionButton.propTypes = {
   reserved: PropTypes.bool.isRequired,
 };
 
-function MissionItem({ name, description, reserved }) {
+function MissionItem({
+  id, name, description, reserved,
+}) {
   return (
     <>
       <td className="mission-name">{name}</td>
@@ -49,6 +51,7 @@ function MissionItem({ name, description, reserved }) {
 }
 
 MissionItem.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
@@ -79,10 +82,10 @@ function Missions() {
           {missions.map((mission) => (
             <tr key={mission.id}>
               <MissionItem
+                id={mission.id}
                 name={mission.name}
                 description={mission.description}
                 reserved={mission.reserved}
-                id={mission.id}
               />
             </tr>
           ))}
