@@ -11,22 +11,22 @@ function MyProfile() {
 
   return (
     <div className="mainContainer">
-      <div className="rocketsContainer">
+      <div className="allReservedContainer">
         <h2>My Rockets</h2>
-        <ol className="allReservedContainer">
+        <ul className="allReservedContainer">
           {reservedRockets.map((rocket) => (
             <li className="reservedRocketLi" key={rocket.id}>{rocket.name}</li>
           ))}
-        </ol>
+        </ul>
       </div>
       {/* your joined missions here */}
-      <div className="missionsContainer">
+      <div className="allReservedContainer">
         <h2>My Missions</h2>
-        <ol className="allActiveContainer">
+        <ul className="allActiveContainer">
           {activeMissions.map((rocket) => (
-            <li className="reservedMissionsLi" key={rocket.id}>{rocket.name}</li>
+            <li key={rocket.id}>{rocket.name}</li>
           ))}
-        </ol>
+        </ul>
       </div>
     </div>
   );

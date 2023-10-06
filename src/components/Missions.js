@@ -6,14 +6,10 @@ import {
   getMissionsData,
 } from './Redux/Missions/missionsSlice';
 
-// MissionButton Component
-function MissionButton({ id, reserved, onClick }) {
   return (
     <button
-      className={`${reserved ? 'leave-mission-btn' : 'join-mission-btn'}`}
+      className={`${reserved ? 'leaveMission' : 'joinMission'}`}
       type="button"
-      onClick={() => onClick(id)}
-    >
       {reserved ? 'Leave Mission' : 'Join Mission'}
     </button>
   );
@@ -39,9 +35,9 @@ function MissionItem({
       <td className="mission-description">{description}</td>
       <td className="table-badges">
         {reserved ? (
-          <span className="active-member-badge">Active Member</span>
+          <span className="activeMember">Active Member</span>
         ) : (
-          <span className="not-member-badge">Not a member</span>
+          <span className="notMember">Not a member</span>
         )}
       </td>
       <td className="table-btns">
