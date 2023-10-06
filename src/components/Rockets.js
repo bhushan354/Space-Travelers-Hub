@@ -1,10 +1,14 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRocketsApi, addReserved, removeReserved } from './Redux/Rockets/rocketSlice';
 import '../App.css';
+
+const LoadingSpinner = () => (
+  <div className="loading-spinner-container">
+    <div className="loading-spinner" />
+  </div>
+);
 
 const RocketItem = ({
   id, name, image, description, isReserved, dispatch,
@@ -87,7 +91,7 @@ const Rockets = () => {
   }
 
   if (isLoading) {
-    allRockets = <p>Loading Rockets ...</p>;
+    allRockets = <LoadingSpinner />;
   }
   if (hasError) {
     allRockets = <p>Something went wrong while Loading Rockets</p>;
