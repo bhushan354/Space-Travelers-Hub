@@ -3,15 +3,17 @@ import { Link, Route, Routes } from 'react-router-dom';
 import MyProfile from './components/MyProfile';
 import Missions from './components/Missions';
 import Rockets from './components/Rockets';
+import planet from './planet.png';
 
 function App() {
   return (
     <>
       <nav>
         <div className="navContainer">
-          <div>
+          <div className="logoHead">
+            <img src={planet} alt="planetImg" className="planet" />
             <li className="heading">
-              Space Travelers Hub
+              Space Travellers&apos; Hub
             </li>
           </div>
 
