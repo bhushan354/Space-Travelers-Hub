@@ -19,6 +19,7 @@ export const getRocketsApi = createAsyncThunk(
       name: rocket.name,
       description: rocket.description,
       image: rocket.flickr_images[1],
+      isReserved: false,
     }));
     return ApiResponse;
   },
