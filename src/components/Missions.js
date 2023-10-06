@@ -6,52 +6,49 @@ import {
   getMissionsData,
 } from './Redux/Missions/missionsSlice';
 
-function MisionItem({ id, name, description, reserved }) {
+function MissionButton({ id, reserved }) {
   const dispatch = useDispatch();
 
-  const getButton = (reserved, btn) => {
-    let button;
-    if (btn === 'member') {
-      button = reserved ? (
-        <span className="active-member-badge">Active Member</span>
-      ) : (
-        <span className="not-member-badge">Not a member</span>
-      );
-    }
-    if (btn === 'mission') {
-      button = reserved ? (
-        <button
-          className="leave-mission-btn"
-          type="button"
-          onClick={() => dispatch(missionsHandler(id))}
-        >
-          Leave Mission
-        </button>
-      ) : (
-        <button
-          className="join-mission-btn"
-          type="button"
-          onClick={() => dispatch(missionsHandler(id))}
-        >
-          Join Mission
-        </button>
-      );
-    }
-    return button;
+  const handleClick = () => {
+    dispatch(missionsHandler(id));
   };
 
+  return (
+    <button
+      className={`${reserved ? 'leave-mission-btn' : 'join-mission-btn'}`}
+      type="button"
+      onClick={handleClick}
+    >
+      {reserved ? 'Leave Mission' : 'Join Mission'}
+    </button>
+  );
+}
+
+MissionButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  reserved: PropTypes.bool.isRequired,
+};
+
+function MissionItem({ name, description, reserved }) {
   return (
     <>
       <td className="mission-name">{name}</td>
       <td className="mission-description">{description}</td>
-      <td className="table-badges">{getButton(reserved, 'member')}</td>
-      <td className="table-btns">{getButton(reserved, 'mission')}</td>
+      <td className="table-badges">
+        {reserved ? (
+          <span className="active-member-badge">Active Member</span>
+        ) : (
+          <span className="not-member-badge">Not a member</span>
+        )}
+      </td>
+      <td className="table-btns">
+        <MissionButton id={id} reserved={reserved} />
+      </td>
     </>
   );
 }
 
-MisionItem.propTypes = {
-  id: PropTypes.string.isRequired,
+MissionItem.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
@@ -81,7 +78,7 @@ function Missions() {
           </tr>
           {missions.map((mission) => (
             <tr key={mission.id}>
-              <MisionItem
+              <MissionItem
                 name={mission.name}
                 description={mission.description}
                 reserved={mission.reserved}
