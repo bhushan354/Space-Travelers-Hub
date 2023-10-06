@@ -1,52 +1,107 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Table } from 'react-bootstrap';
-import { fetchMissionsData } from './Redux/Missions/missionsSlice';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  missionsHandler,
+  getMissionsData,
+} from './Redux/Missions/missionsSlice';
 
-const LoadingView = () => <div>Loading...</div>;
-const ErrorView = () => <div>Error: Unable to fetch data for the missions</div>;
-
-const MissionTable = () => {
-  const missionsData = useSelector((state) => state.missions.missionsData);
-  const missionsStatus = useSelector((state) => state.missions.missionsStatus);
+function MissionButton({ id, reserved }) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchMissionsData());
-  }, [dispatch]);
-
-  if (missionsStatus === 'loading') {
-    return <LoadingView />;
-  }
-
-  if (missionsStatus === 'failed') {
-    return <ErrorView />;
-  }
-
-  const renderMissionRow = (mission) => (
-    <tr key={mission.mission_id}>
-      <td>{mission.mission_name}</td>
-      <td>{mission.description}</td>
-      <td>Upcoming</td>
-      <td>
-        <button type="button">Join Mission</button>
-      </td>
-    </tr>
-  );
+  const handleClick = () => {
+    dispatch(missionsHandler(id));
+  };
 
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-        </tr>
-        <th> </th>
-      </thead>
-      <tbody>{missionsData && missionsData.map(renderMissionRow)}</tbody>
-    </Table>
+    <button
+      className={`${reserved ? 'leave-mission-btn' : 'join-mission-btn'}`}
+      type="button"
+      onClick={handleClick}
+    >
+      {reserved ? 'Leave Mission' : 'Join Mission'}
+    </button>
   );
+}
+
+MissionButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  reserved: PropTypes.bool.isRequired,
 };
 
-export default MissionTable;
+function MissionItem({
+  id, name, description, reserved,
+}) {
+  return (
+    <>
+      <td className="mission-name">{name}</td>
+      <td className="mission-description">{description}</td>
+      <td className="table-badges">
+        {reserved ? (
+          <span className="active-member-badge">Active Member</span>
+        ) : (
+          <span className="not-member-badge">Not a member</span>
+        )}
+      </td>
+      <td className="table-btns">
+        <MissionButton id={id} reserved={reserved} />
+      </td>
+    </>
+  );
+}
+
+MissionItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  reserved: PropTypes.bool.isRequired,
+};
+
+function Missions() {
+  const dispatch = useDispatch();
+  const { missions, pending, error } = useSelector((store) => store.missions);
+
+  useEffect(() => {
+    if (missions.length < 1) {
+      dispatch(getMissionsData());
+    }
+  }, [dispatch, missions.length]);
+
+  let content;
+
+  if (!pending && !error) {
+    content = (
+      <table className="missions-table">
+        <tbody>
+          <tr key="missions">
+            <th>Mission</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th> </th>
+          </tr>
+          {missions.map((mission) => (
+            <tr key={mission.id}>
+              <MissionItem
+                id={mission.id}
+                name={mission.name}
+                description={mission.description}
+                reserved={mission.reserved}
+              />
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  }
+
+  if (pending) {
+    content = <h1>Fetching Missions</h1>;
+  }
+  if (error) {
+    content = <h1>An Error occurred while fetching missions</h1>;
+  }
+
+  return <section className="missions">{content}</section>;
+}
+
+export default Missions;
