@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { missionsHandler, getMissionsData } from './Redux/Missions/missionsSlice';
+import {
+  missionsHandler,
+  getMissionsData,
+} from './Redux/Missions/missionsSlice';
 
-function MisionItem({
-  id, name, description, reserved,
-}) {
+function MisionItem({ id, name, description, reserved }) {
   const dispatch = useDispatch();
 
   const getButton = (reserved, btn) => {
@@ -19,9 +20,21 @@ function MisionItem({
     }
     if (btn === 'mission') {
       button = reserved ? (
-        <button className="leave-mission-btn" type="button" onClick={() => dispatch(missionsHandler(id))}>Leave Mission</button>
+        <button
+          className="leave-mission-btn"
+          type="button"
+          onClick={() => dispatch(missionsHandler(id))}
+        >
+          Leave Mission
+        </button>
       ) : (
-        <button className="join-mission-btn" type="button" onClick={() => dispatch(missionsHandler(id))}>Join Mission</button>
+        <button
+          className="join-mission-btn"
+          type="button"
+          onClick={() => dispatch(missionsHandler(id))}
+        >
+          Join Mission
+        </button>
       );
     }
     return button;
@@ -64,7 +77,7 @@ function Missions() {
             <th>Mission</th>
             <th>Description</th>
             <th>Status</th>
-            <th>{' '}</th>
+            <th> </th>
           </tr>
           {missions.map((mission) => (
             <tr key={mission.id}>
@@ -85,7 +98,7 @@ function Missions() {
     content = <h1>Fetching Missions</h1>;
   }
   if (error) {
-    content = <h1>Error occurred while fetching missions</h1>;
+    content = <h1>An Error occurred while fetching missions</h1>;
   }
 
   return <section className="missions">{content}</section>;
