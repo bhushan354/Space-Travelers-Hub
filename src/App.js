@@ -13,9 +13,7 @@ function App() {
           <div className="navContainer">
             <div className="logoHead">
               <img src={planet} alt="planetImg" className="planet" />
-              <li className="heading">
-                Space Travellers&apos; Hub
-              </li>
+              <li className="heading">Space Travellers&apos; Hub</li>
             </div>
 
             <div className="linksContainer">
@@ -29,7 +27,6 @@ function App() {
                 <Link to="/MyProfile">MyProfile</Link>
               </li>
             </div>
-
           </div>
         </nav>
         <hr />
