@@ -51,6 +51,27 @@ li.heading {
   color: #007bff;
 }
 
+.addReservedBtn {
+  background-color: rgb(57, 159, 255);
+  color: white;
+  padding: 4px;
+  border: none;
+}
+
+.cancelReservedBtn {
+  border: 1px solid gray;
+  color: gray;
+  background: white;
+  padding: 2px;
+}
+
+.smallBtnCheck {
+  background-color: #14a7c1;
+  padding: 2px;
+  color: #fff;
+  height: 20px;
+}
+
 /* Rockets styling */
 .eachRocket {
   display: flex;
