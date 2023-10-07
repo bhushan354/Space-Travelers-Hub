@@ -1,11 +1,18 @@
+import React, { useState } from 'react'; // Import useState
 import './App.css';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes, NavLink } from 'react-router-dom'; // Import NavLink
 import MyProfile from './components/MyProfile';
 import Missions from './components/Missions';
 import Rockets from './components/Rockets';
 import planet from './planet.png';
 
 function App() {
+  const [activeLink, setActiveLink] = useState(null);
+
+  const handleLinkClick = (linkName) => {
+    setActiveLink(linkName);
+  };
+
   return (
     <>
       <div className="wholeSiteContainer">
@@ -18,13 +25,32 @@ function App() {
 
             <div className="linksContainer">
               <li>
-                <Link to="/">Rockets</Link>
+                <NavLink
+                  exact
+                  to="/"
+                  className={activeLink === 'Rockets' ? 'activeLink' : 'inactiveLink'}
+                  onClick={() => handleLinkClick('Rockets')}
+                >
+                  Rockets
+                </NavLink>
               </li>
               <li>
-                <Link to="/missions">Missions</Link>
+                <NavLink
+                  to="/missions"
+                  className={activeLink === 'Missions' ? 'activeLink' : 'inactiveLink'}
+                  onClick={() => handleLinkClick('Missions')}
+                >
+                  Missions
+                </NavLink>
               </li>
               <li>
-                <Link to="/MyProfile">MyProfile</Link>
+                <NavLink
+                  to="/MyProfile"
+                  className={activeLink === 'MyProfile' ? 'activeLink' : 'inactiveLink'}
+                  onClick={() => handleLinkClick('MyProfile')}
+                >
+                  MyProfile
+                </NavLink>
               </li>
             </div>
           </div>
