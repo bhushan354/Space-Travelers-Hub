@@ -34,7 +34,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[To Be Added]**
+- Reserve Rocket you will see All Reserved Rockets in My Profile section.
+- Join Missions and you will see all Joined Missions in My Profile section.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,6 +110,10 @@ If you like this project, pplease, feel free to star the repository and share it
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to thank the Microverse team and Code reviewers who helped us create this project. Also, we would like to express our sincere gratitude to [Agustine Soria](https://github.com/SaveryIV) for his valuable assistance in solving a problem with fetching rockets From API. His expertise and guidance were instrumental in finding a solution.
 
 
 ## 📝 License <a name="license"></a>
