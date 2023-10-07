@@ -6,17 +6,20 @@ import {
   getMissionsData,
 } from './Redux/Missions/missionsSlice';
 
+// MissionButton Component
+function MissionButton({ reserved, onClick }) {
   return (
     <button
-      className={`${reserved ? 'leaveMission' : 'joinMission'}`}
+      className={reserved ? 'leaveMission' : 'joinMission'}
       type="button"
+      onClick={onClick}
+    >
       {reserved ? 'Leave Mission' : 'Join Mission'}
     </button>
   );
 }
 
 MissionButton.propTypes = {
-  id: PropTypes.string.isRequired,
   reserved: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
@@ -42,9 +45,8 @@ function MissionItem({
       </td>
       <td className="table-btns">
         <MissionButton
-          id={id}
           reserved={reserved}
-          onClick={onMissionButtonClick}
+          onClick={() => onMissionButtonClick(id)}
         />
       </td>
     </>
