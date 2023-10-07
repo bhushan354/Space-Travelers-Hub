@@ -36,7 +36,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
   });
 
@@ -44,7 +44,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
 
     expect(screen.getByText('Mission')).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
 
     expect(screen.getByText('Join Mission')).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
 
     expect(store.getState().missions.pending).toBe(false);
@@ -81,7 +81,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
 
     expect(store.getState().missions.error).toBeNull();
@@ -91,7 +91,7 @@ describe('Missions Component', () => {
     render(
       <Provider store={store}>
         <Missions />
-      </Provider>
+      </Provider>,
     );
 
     expect(store.getState().missions.missions.length).toBe(2);

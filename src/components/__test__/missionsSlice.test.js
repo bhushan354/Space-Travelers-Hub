@@ -1,9 +1,7 @@
-import {
+import missionsReducer, {
   getMissionsData,
   missionsHandler,
 } from '../Redux/Missions/missionsSlice';
-import { configureStore } from '@reduxjs/toolkit';
-import missionsReducer from '../Redux/Missions/missionsSlice';
 
 describe('missions reducer', () => {
   const initialState = {
@@ -11,8 +9,6 @@ describe('missions reducer', () => {
     isLoading: false,
     hasError: false,
   };
-
-  let store = configureStore({ reducer: { missions: missionsReducer } });
 
   it('should handle initial state', () => {
     expect(missionsReducer(undefined, {})).toEqual(initialState);
@@ -37,7 +33,7 @@ describe('missions reducer', () => {
     ];
 
     expect(
-      missionsReducer(initialState, getMissionsData.fulfilled(dummyMissions))
+      missionsReducer(initialState, getMissionsData.fulfilled(dummyMissions)),
     ).toEqual({
       missions: dummyMissions,
       isLoading: false,
