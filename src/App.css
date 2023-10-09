@@ -1,5 +1,8 @@
 /* Common styles */
-
+li {
+  text-decoration: none;
+  list-style: none;
+}
 
 .navContainer {
   display: flex;
