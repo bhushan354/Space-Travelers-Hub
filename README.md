@@ -41,7 +41,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo link](will add later)
+- [Live Demo link](https://dynamic-eclair-3b74e5.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
