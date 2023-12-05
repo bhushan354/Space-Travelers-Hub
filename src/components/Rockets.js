@@ -64,7 +64,7 @@ const Rockets = () => {
   const { rocketsData, isLoading, hasError } = useSelector((store) => store.rocketsData);
   useEffect(() => {
     dispatch(getRocketsApi());
-  }, []);
+  }, [dispatch]);
 
   let allRockets;
 
